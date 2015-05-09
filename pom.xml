@@ -7,10 +7,12 @@
     <groupId>com.nishionline</groupId>
     <artifactId>test</artifactId>
     <version>0.1.0</version>
+    <packaging>pom</packaging>
     <description>Not to be used anywhere. It is to try out new things. It's more like a sandbox.</description>
 
     <modules>
         <module>dynamicFactorial</module>
+        <module>invoiceNumber</module>
     </modules>
 
     <licenses>
