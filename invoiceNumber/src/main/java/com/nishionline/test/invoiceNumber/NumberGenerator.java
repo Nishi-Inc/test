@@ -1,8 +1,10 @@
 package com.nishionline.test.invoiceNumber;
 
 import com.nishionline.test.invoiceNumber.enums.DocumentType;
+import com.nishionline.test.utils.GlobalConstants;
 
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import static java.lang.String.format;
@@ -25,11 +27,8 @@ public class NumberGenerator extends DocumentNumberUtils {
     }
 
     public String generate() {
-        Calendar calendar = Calendar.getInstance();
-        StringBuilder numberBuilder = new StringBuilder(this.documentType.getCode());
-        numberBuilder.append(calendar.get(Calendar.YEAR));
-        numberBuilder.append(format("%02d", calendar.get(Calendar.MONTH) + 1));
-        numberBuilder.append(format("%02d", calendar.get(Calendar.DAY_OF_MONTH)));
+        StringBuilder numberBuilder = new StringBuilder(this.documentType.getCode().substring(0, 3));
+        numberBuilder.append(LocalDate.now().format(DateTimeFormatter.ofPattern(GlobalConstants.DATE_FORMAT_STRING)));
         numberBuilder.append(format("%03d", this.serial));
         numberBuilder.append(this.calculateCheckDigit(numberBuilder.toString()));
 

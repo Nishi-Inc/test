@@ -8,4 +8,5 @@ public class GlobalConstants {
 
 
     public static final String BLANK = "";
+    public static final String DATE_FORMAT_STRING = "yyyyMMdd";
 }
