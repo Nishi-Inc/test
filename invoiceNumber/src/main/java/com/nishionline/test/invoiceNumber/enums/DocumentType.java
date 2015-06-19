@@ -5,10 +5,12 @@ package com.nishionline.test.invoiceNumber.enums;
  * @since 10/5/15 04:04
  */
 public enum DocumentType {
-    ESTIMATE("EST"),
-    INVOICE("INV");
+    ESTIMATE("ESTIMATE"),
+    INVOICE("INVOICE");
 
     private String code;
+
+    DocumentType() {}
 
     DocumentType(String code) {
         this.code = code;

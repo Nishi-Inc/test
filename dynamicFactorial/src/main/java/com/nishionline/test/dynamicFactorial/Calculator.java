@@ -44,7 +44,7 @@ public class Calculator {
             }
         }
 
-        if(lines == null || lines.length < 2) {
+        if(lines == null || lines.length < 1) {
             FileUtils.appendToFile(this.dataFile, "1\n1");
             this.factorialMap.put(0, "1");
             this.factorialMap.put(1, "1");
@@ -67,13 +67,8 @@ public class Calculator {
             throw new IllegalArgumentException("Number should be positive integer. Found "+number);
         }
 
-//        This case will be covered by the following if condition
-//        if(number == 1 || number ==0) {
-//            return this.factorialMap.get(number);
-//        }
-
         if(this.factorialMap.containsKey(number)) {
-            if(verbose) {
+            if(this.verbose) {
                 System.out.println(format("Found factorial of %d.", number));
             }
             return this.factorialMap.get(number);
@@ -83,7 +78,7 @@ public class Calculator {
             System.out.println(format("Calculating factorial of %d.", number));
         }
 
-        // This is to battle against the stackOverflow error
+        // This is to prevent the stackOverflow error
         while(number-this.factorialMap.size() > LIMIT_OF_RECURSIVE_STACK) {
             this.factorial(this.factorialMap.size()+100);
         }

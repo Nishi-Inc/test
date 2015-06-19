@@ -27,7 +27,7 @@ public class NumberGenerator extends DocumentNumberUtils {
     }
 
     public String generate() {
-        StringBuilder numberBuilder = new StringBuilder(this.documentType.getCode().substring(0, 3));
+        StringBuilder numberBuilder = new StringBuilder(this.documentType.getCode().substring(0, 3).toUpperCase());
         numberBuilder.append(LocalDate.now().format(DateTimeFormatter.ofPattern(GlobalConstants.DATE_FORMAT_STRING)));
         numberBuilder.append(format("%03d", this.serial));
         numberBuilder.append(this.calculateCheckDigit(numberBuilder.toString()));
